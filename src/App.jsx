@@ -1,35 +1,57 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import Header from "./components/Header.jsx";
-import Register from "./pages/Register.jsx";
-import Login from "./pages/Login.jsx";
-import { createBrowserRouter, Navigate, Router, RouterProvider } from "react-router-dom";
+import Header from "./components/header";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import AuthGuard from "./auth/AuthGuard";
 
-const DefaultRouter = () => {
-  const authData = JSON.parse(localStorage.getItem("authData"));
-  if(authData){
-  return<Navigate to = "/Login" replace/>;
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+
+const DefaultRoute = () => {
+  const loginData = JSON.parse(localStorage.getItem("loginData"));
+  if (loginData) {
+    return <Navigate to="/dashboard" replace />;
   }
-  return <Navigate to = "/Register" replace/>;
-}
+  return <Navigate to="/login" replace />;
+};
+
 function App() {
   const route = createBrowserRouter([
     {
       path: "/",
-      element: <DefaultRouter />
+      element: <DefaultRoute />,
     },
     {
-      path: "/Login",
-      element: <Login />
+      path: "/login",
+      element: (
+        <AuthGuard required={false}>
+          <Login />
+        </AuthGuard>
+      ),
     },
     {
-      path: "/Register",
-      element: <Register />
+      path: "/register",
+      element: (
+        <AuthGuard required={false}>
+          <Register />
+        </AuthGuard>
+      ),
+    },
+    {
+      path: "/dashboard",
+      element: (
+        <AuthGuard required={true}>
+          <Dashboard />
+        </AuthGuard>
+      ),
     },
   ]);
 
   return <RouterProvider router={route} />;
 }
+
 export default App;
