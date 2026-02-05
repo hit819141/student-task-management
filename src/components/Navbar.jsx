@@ -1,7 +1,7 @@
 import React from 'react'
 import '../index.css';
 
-function Navbar() {
+function Navbar({onLogout, onAddTaskToggle = true, isAddTASKformopen}) {
   return (
     <nav className="navbar">
         <div className="navbar-brand">
