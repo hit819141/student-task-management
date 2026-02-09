@@ -1,24 +1,21 @@
-import React from 'react'
-import '../index.css';
+import React from "react";
+import "../index.css";
 
-function Navbar({onLogout, onAddTaskToggle = true, isAddTASKformopen}) {
+function Navbar({ title ,onLogout ,onAddTaskBtnClick , isFormOpen}) {
   return (
     <nav className="navbar">
-        <div className="navbar-brand">
-        <h1>Task manager</h1>
-         </div>
+      <div className="navbar-brand">
+        <h1>{title}</h1>
+      </div>
 
-        <div className="navbar-actions">
-            <button className="btn.primary">
-            Add Task
-             </button>
+      <div className="navbar-actions">
+        <button className={isFormOpen ? "btn-secondary" : "btn-primary"} onClick={onAddTaskBtnClick}>
+          {isFormOpen ? 'Close' : 'Add Task'}</button>
 
-            <button className="btn-seccondary">
-            Logout
-            </button>
-         </div>
+        <button className="btn-secondary" onClick={onLogout}>Logout</button>
+      </div>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

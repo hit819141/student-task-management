@@ -137,7 +137,8 @@ const TaskForm = ({ editTask, setEditTask, onTaskSaved }) => {
       <form onSubmit={handleSubmit}>
         {/* Task ID */}
         <div>
-          <input
+          <input            
+            style={{ backgroundColor: "#302b63", marginBottom: "8px" }}
             name="id"
             placeholder="Task ID"
             value={formData.id}
@@ -149,6 +150,7 @@ const TaskForm = ({ editTask, setEditTask, onTaskSaved }) => {
         {/* Title */}
         <div>
           <input
+            style={{ backgroundColor: "#302b63", marginBottom: "8px" }}
             name="title"
             placeholder="Task Title"
             value={formData.title}
@@ -160,6 +162,7 @@ const TaskForm = ({ editTask, setEditTask, onTaskSaved }) => {
         {/* Description */}
         <div>
           <textarea
+            style={{ backgroundColor: "#302b63", marginBottom: "8px" }}
             name="description"
             placeholder="Description"
             rows="3"
@@ -175,6 +178,7 @@ const TaskForm = ({ editTask, setEditTask, onTaskSaved }) => {
         <div style={{ display: "flex", gap: "10px" }}>
           <div style={{ flex: 1 }}>
             <input
+            style={{ backgroundColor: "#302b63", marginBottom: "8px" }}
               type="date"
               name="duedate"
               value={formData.duedate}
@@ -187,6 +191,7 @@ const TaskForm = ({ editTask, setEditTask, onTaskSaved }) => {
 
           <div style={{ flex: 1 }}>
             <select
+              style={{ backgroundColor: "#302b63", marginBottom: "8px" }}
               name="priority"
               value={formData.priority}
               onChange={handleChange}
